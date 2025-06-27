@@ -1,18 +1,37 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from '../pages/App';
-import Formlist from '../pages/Formlist';
-import InputForm from '../pages/InputForm';
+// src/routes/AppRouter.jsx
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Login from "../pages/auth/Login";
+import Home from "../pages/home/Home";
+import FormEntry from "../pages/form/FormEntry";
+import FormList from "../pages/form/FormList";
+import InputForm from "../pages/form/InputForm";
+import LayoutWrapper from "../components/layout/LayoutWrapper";
 
-function AppRouter() {
+const isAuthenticated = () => !!localStorage.getItem("token");
+
+const AppRouter = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/formlist/:rootcode" element={<Formlist />} />
-        <Route path="/form/:formId" element={<InputForm />} />
+        <Route path="/login" element={<Login />} />
+
+        <Route
+          path="/"
+          element={
+            isAuthenticated() ? <LayoutWrapper /> : <Navigate to="/login" />
+          }
+        >
+          <Route index element={<Home />} />
+          <Route path="form" element={<FormEntry />} />
+          <Route path="form/list" element={<FormList />} />
+          <Route path="form/:routeId/:formId" element={<InputForm />} />
+
+        </Route>
+
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
-}
+};
 
 export default AppRouter;

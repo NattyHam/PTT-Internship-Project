@@ -1,4 +1,4 @@
-const rootcodeFormMap = {
+const rcFormMap = {
   RC0250: ["0221", "0224", "0219", "0225", "0223", "0227", "0228"],
   RC0260: ["0221", "0219", "0223", "0227", "0228", "0220", "0222"],
   RC0400: ["0221", "0218", "0235"],
@@ -12,5 +12,5 @@ const rootcodeFormMap = {
   RC5940: ["0005", "0006", "0007"]
 };
 
-export default rootcodeFormMap;
+export default rcFormMap;
 
