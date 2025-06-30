@@ -10,6 +10,7 @@ import LayoutWrapper from "../components/layout/LayoutWrapper";
 const isAuthenticated = () => !!localStorage.getItem("token");
 
 const AppRouter = () => {
+  
   return (
     <Router>
       <Routes>

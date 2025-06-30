@@ -1,10 +1,12 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useForm, useFieldArray } from "react-hook-form";
+import { useForm, useFieldArray, useFormContext } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { ArrowLeft, Plus, Trash2 } from "lucide-react";
 import FormRenderer from "../../components/form/FormRenderer";
+
+
 
 const loadFormConfig = async (formId) => {
   return await import(`../../configs/formConfigs/${formId}.js`);
@@ -14,6 +16,7 @@ const InputForm = () => {
   const { routeId, formId } = useParams(); 
   const navigate = useNavigate();
   const [config, setConfig] = useState(null);
+  
 
   useEffect(() => {
     loadFormConfig(formId)
@@ -251,6 +254,8 @@ const InputForm = () => {
 
 // Complex Array Field Component for nested fields
 const ComplexArrayField = ({ field, control, register, errors }) => {
+  const [savedEntries, setSavedEntries] = useState([]);
+
   const { fields, append, remove } = useFieldArray({
     control,
     name: field.name,

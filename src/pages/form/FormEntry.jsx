@@ -70,7 +70,7 @@ const FormEntry = () => {
                 <div>
                   <label className="block text-sm font-medium mb-2">Select route code</label>
                   <select
-                    className="w-full border px-4 py-2 rounded shadow-sm"
+                    className="w-full border px-4 py-2 rounded shadow-sm text-center"
                     value={selectedRoute}
                     onChange={(e) => setSelectedRoute(e.target.value)}
                   >
@@ -87,7 +87,7 @@ const FormEntry = () => {
                 <div>
                   <label className="block text-sm font-medium mb-2">Select Pig type</label>
                   <select
-                    className="w-full border px-4 py-2 rounded shadow-sm"
+                    className="w-full border px-4 py-2 rounded text-center shadow-sm"
                     value={selectedPigType}
                     onChange={(e) => setSelectedPigType(e.target.value)}
                   >

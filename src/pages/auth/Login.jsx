@@ -62,9 +62,10 @@ const onSubmit = async (data) => {
             {...register("id")}
             className="w-full border px-3 py-2 rounded"
           />
-          {errors.email && (
-            <p className="text-red-500 text-sm">{errors.email.message}</p>
-            )}
+          {errors.id && (
+            <p className="text-red-500 text-sm">{errors.id.message}</p>
+          )}
+
 
         </div>
 
